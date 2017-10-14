@@ -51,6 +51,7 @@ public class Othello {
         Scanner sc = new Scanner(System.in);
         int[] input = new int[2];
         do {
+            System.out.println("Input \"Row Space column.\" >");
             input[0] = sc.nextInt();
             input[1] = sc.nextInt();
         } while(input[0] < 0 || input[0] > 7 || input[1] < 0 || input[1] > 7);  //do while を追加（E.Tより）
@@ -104,7 +105,7 @@ public class Othello {
             }
             System.out.print('\n');
         }
-        System.out.println("Input \"Row Space column.\" >");
+        //System.out.println("Input \"Row Space column.\" >"); inputめそっどにいれてもいい？
         
          
     }
