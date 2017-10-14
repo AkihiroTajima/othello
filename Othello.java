@@ -50,8 +50,11 @@ public class Othello {
     public static int[] input(){
         Scanner sc = new Scanner(System.in);
         int[] input = new int[2];
-        input[0] = sc.nextInt();
-        input[1] = sc.nextInt();
+        do {
+            input[0] = sc.nextInt();
+            input[1] = sc.nextInt();
+        } while(input[0] < 0 || input[0] > 7 || input[1] < 0 || input[1] > 7);  //do while を追加（遠藤）
+        
         System.out.println("Input finished");
         return input;
     }
