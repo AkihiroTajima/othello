@@ -53,7 +53,7 @@ public class Othello {
         do {
             input[0] = sc.nextInt();
             input[1] = sc.nextInt();
-        } while(input[0] < 0 || input[0] > 7 || input[1] < 0 || input[1] > 7);  //do while を追加（遠藤）
+        } while(input[0] < 0 || input[0] > 7 || input[1] < 0 || input[1] > 7);  //do while を追加（E.Tより）
         
         System.out.println("Input finished");
         return input;
