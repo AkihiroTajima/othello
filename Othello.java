@@ -40,7 +40,8 @@ public class Othello {
         draw(state, turn);
         while(true){                                                                    //メインループ、無限ループ、終了条件を作るべき
             int[]  x = input();                                                         //inputのみ形が違うので変えたいが、範囲の広い変数を増やしたくない。
-            update(x, turn, state);                                                                      
+            update(x, turn, state); 
+            turn *= -1;                                                                 //ターンは１とー１で表現。＊＝－１で交代する    
             draw(state, turn);           
         }
            
@@ -102,7 +103,7 @@ public class Othello {
         }
         System.out.println("Input \"Row Space column.\" >");
         
-        turn *= -1;                                                                 //ターンは１とー１で表現。＊＝－１で交代する     
+         
     }
     public static void turnPiece(int x, int y, char[][] state, int turn, char piece, int[] input){
         int slope = SAME;
