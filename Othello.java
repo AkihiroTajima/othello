@@ -19,6 +19,7 @@ public class Othello {
     final static int Y = -1;
     final static int HEIGHT = 8;
     final static int WIDTH = 8;
+    final static int defa = 50;
     
     
     
@@ -67,7 +68,7 @@ public class Othello {
             for(int h = 0;h<HEIGHT;h++){
                 for(int w = 0;w<WIDTH;w++){
                     if(state[h][w]==piece){
-                        System.out.print("Find ");
+                        System.out.print("Find "+piece);
                         System.out.print(h);
                         System.out.println(w);
                         int x = h-input[0];
@@ -98,11 +99,14 @@ public class Othello {
         }
     }
     public static void turnPiece(int x, int y, char[][] state, int turn, char piece, int[] input){
-        int slope = 50;
+        int slope = defa;
         if (x != 0){
             slope = y/x;
         }else {
             slope = 0;
+        }
+        if (x==0 && y==0){
+            slope = defa;
         }
         System.out.println("x ="+x);
         System.out.println("y ="+y);
@@ -111,33 +115,47 @@ public class Othello {
         System.out.println("length ="+length);
             switch(slope){
                 case 1:
-                    for(int i =0;i<length;i++){
-                        state[input[0]+i][input[1]-i] = piece;
+                    if (x>0 && y>0){
+                        for(int i =1;i<length;i++){
+                        state[input[0]+i][input[1]+i] = piece;
+                        }
+                    }else if (x<0 && y<0){
+                        for(int i =1;i<length;i++){
+                        state[input[0]-i][input[1]-i] = piece;
+                        }
                     }
                     break;
                 case -1:
-                     for(int i =0;i<length;i++){
+                    if (x<0 && y>0){
+                        for(int i =1;i<length;i++){
+                        state[input[0]-i][input[1]+i] = piece;
+                        }
+                    }else if (x>0 && y<0){
+                        for(int i =1;i<length;i++){
                         state[input[0]+i][input[1]-i] = piece;
-                     }
+                        }
+                    }
                      break;
                 case 0:
                     if(y>0 && x==0){
-                        for(int i =0;i<length;i++){
+                        for(int i =1;i<length;i++){
                         state[input[0]][input[1]+i] = piece;
                         }
                     }else if (y<0 && x==0){
-                        for(int i =0;i<length;i++){
+                        for(int i =1;i<length;i++){
                         state[input[0]][input[1]-i] = piece;
                     }
                     }else if (x>0 && y==0){
-                        for(int i =0;i<length;i++){
+                        for(int i =1;i<length;i++){
                         state[input[0]+i][input[1]] = piece;
                         }
-                    }else if (y<0 && x==0){
-                        for(int i =0;i<length;i++){
+                    }else if (x<0 && y==0){
+                        for(int i =1;i<length;i++){
                         state[input[0]-i][input[1]] = piece;
                         }
                     }    
+                    break;
+                case defa:
                     break;
                 default:
                     break;
@@ -148,3 +166,5 @@ public class Othello {
     
               
 }
+    
+
