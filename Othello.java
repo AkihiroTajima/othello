@@ -15,6 +15,8 @@ public class Othello {
     /**
      * @param args the command line arguments
      */
+
+
     final static int X = 1;                                                             //ターンは１トー１で表現。
     final static int Y = -1;                                                            //コマはXとYで表現。混乱の元なので。オブジェクト化を考えている。
     final static int HEIGHT = 8;
@@ -24,7 +26,14 @@ public class Othello {
     
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        // 盤面の表示、入力yの受付、盤面の更新、を行う。
+        //　残る改良、　コマのオブジェクト化
+        //          stateをnewでサイズの指定をする。
+        //          無限ループに終了条件をつけ、breakuする。
+        //          メインループの形を整える。
+        //          update()のturnPiece()は受け取る引数が多すぎる。
+        //          GUI作成。
+        //          pleyerオブジェクトなどを作り、CPUと対戦しやすいコードにする。
         int turn = X;
         char[][] state =   {{'o','o','o','o','o','o','o','o','\n'},                     //newしない（できない）やり方知らない。調べるべき。
                             {'o','o','o','o','o','o','o','o','\n'},
@@ -59,6 +68,12 @@ public class Othello {
         System.out.println("Input finished");
         return input;
     }
+
+
+
+
+
+
     public static void update(int[] input, int turn, char[][] state){
         char piece = 'o';
         if(turn == 1){
@@ -78,13 +93,16 @@ public class Othello {
                         int y = w-input[1];
 
                         turnPiece(x, y, state, turn, piece, input);                 //長くなったので分割。コードが乱雑になった。
-                        
                     }
-                
                 }    
             } 
             System.out.println("update finished");                                                                      
     }
+
+
+
+
+
     public static void draw(char[][] state, int turn){
         char piece ='o';
         if(turn == 1){
@@ -96,7 +114,6 @@ public class Othello {
         System.out.println("turn " +piece);
         System.out.println("   "+"0 1 2 3 4 5 6 7");
 
-
         for(int i = 0;i<HEIGHT;i++){
             System.out.print(i +" ");
             for(int j = 0;j<WIDTH;j++){
@@ -106,8 +123,11 @@ public class Othello {
             System.out.print('\n');
         }
         //System.out.println("Input \"Row Space column.\" >"); inputめそっどにいれてもいい？
-        
-         
+            
+
+
+
+
     }
     public static void turnPiece(int x, int y, char[][] state, int turn, char piece, int[] input){
         int slope = SAME;
@@ -178,7 +198,4 @@ public class Othello {
     }
         
     
-              
-}
-    
-
+}            
